@@ -1,5 +1,5 @@
 # Compiled binaries and executables
-server
+/server
 server.exe
 *.exe
 *.exe~
