@@ -1,0 +1,36 @@
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+postgres:
+  host: "localhost"
+  port: 5432
+  user: "your_db_user"
+  password: "your_db_password"
+  dbname: "feature_flag_db"
+  sslmode: "disable"
+  max_conns: 20
+  min_conns: 2
+
+redis:
+  host: "localhost"
+  port: 6379
+  password: "your_redis_password"
+  db: 0
+
+clients:
+  - name: "checkout-service"
+    api_key: "checkout-secret-key-placeholder"
+    rate_limit:
+      capacity: 100
+      refill_rate: 10.0
+  - name: "billing-service"
+    api_key: "billing-secret-key-placeholder"
+    rate_limit:
+      capacity: 50
+      refill_rate: 5.0
+  - name: "admin-panel"
+    api_key: "admin-secret-key-placeholder"
+    rate_limit:
+      capacity: 10
+      refill_rate: 1.0
