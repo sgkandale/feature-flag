@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "8b128a12-2136-4958-829f-fe18905fa184",
+		"name": "Feature Flag",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9047467"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/health",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Flags",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{prodUrl}}/flags",
+					"host": [
+						"{{prodUrl}}"
+					],
+					"path": [
+						"flags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Flag",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{prodUrl}}/flags/flag-1?env=prod",
+					"host": [
+						"{{prodUrl}}"
+					],
+					"path": [
+						"flags",
+						"flag-1"
+					],
+					"query": [
+						{
+							"key": "env",
+							"value": "prod"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Flag",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"flag-1\",\n    \"environment\": \"prod\",\n    \"enabled\": true,\n    \"rollout_percentage\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{prodUrl}}/flags",
+					"host": [
+						"{{prodUrl}}"
+					],
+					"path": [
+						"flags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Flag",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"environment\": \"prod\",\n    \"enabled\": true,\n    \"rollout_percentage\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/flags/flag-1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"flags",
+						"flag-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Flag",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/flags/flag-1?env=prod",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"flags",
+						"flag-1"
+					],
+					"query": [
+						{
+							"key": "env",
+							"value": "prod"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evaluate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "{{api_key_checkout}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{prodUrl}}/evaluate/flag-1?env=prod&caller_id=caller-2",
+					"host": [
+						"{{prodUrl}}"
+					],
+					"path": [
+						"evaluate",
+						"flag-1"
+					],
+					"query": [
+						{
+							"key": "env",
+							"value": "prod"
+						},
+						{
+							"key": "caller_id",
+							"value": "caller-2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": ""
+		},
+		{
+			"key": "api_key_checkout",
+			"value": ""
+		},
+		{
+			"key": "prodUrl",
+			"value": ""
+		}
+	]
+}
