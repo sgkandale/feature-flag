@@ -68,6 +68,9 @@ func main() {
 
 	flagHandler.RegisterRoutes(router, authMiddleware, rateLimitMiddleware)
 	router.GET("/health", healthHandler.HealthCheck)
+	router.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "ok")
+	})
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
